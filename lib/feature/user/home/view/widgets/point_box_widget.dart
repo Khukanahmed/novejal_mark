@@ -16,82 +16,76 @@ class PointBoxWidget extends StatelessWidget {
 
       return Container(
         decoration: BoxDecoration(
-          color: hasMark ? const Color(0xFF1E3A8A) : Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          color: hasMark ? const Color(0xFF1B5E20) : Colors.white,
+          borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: hasMark ? AppColors.badgeBg : Colors.indigo.shade200,
-            width: 2.5,
+            color: hasMark ? AppColors.badgeBg : Colors.green.shade200,
+            width: 2.0,
           ),
           boxShadow: [
             BoxShadow(
               color: hasMark
-                  ? AppColors.badgeBg.withValues(alpha: 0.3)
-                  : Colors.black.withValues(alpha: 0.06),
-              blurRadius: hasMark ? 10 : 4,
-              offset: const Offset(0, 3),
+                  ? AppColors.primary.withValues(alpha: 0.25)
+                  : Colors.black.withValues(alpha: 0.04),
+              blurRadius: hasMark ? 8 : 3,
+              offset: const Offset(0, 2),
             ),
           ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Badge header
+              // Tiny Badge header
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                 decoration: BoxDecoration(
                   color: hasMark
                       ? Colors.white.withValues(alpha: 0.15)
-                      : Colors.indigo.shade50,
-                  borderRadius: BorderRadius.circular(10),
+                      : Colors.green.shade50,
+                  borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(
                       hasMark ? Icons.stars_rounded : Icons.star_border_rounded,
-                      size: 13,
-                      color: hasMark ? Colors.amberAccent : Colors.indigo,
+                      size: 11,
+                      color: hasMark ? Colors.amberAccent : AppColors.primary,
                     ),
-                    const SizedBox(width: 3),
+                    const SizedBox(width: 2),
                     Text(
                       'পয়েন্ট',
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 9,
                         fontWeight: FontWeight.bold,
-                        color: hasMark ? Colors.white70 : Colors.indigo.shade700,
+                        color: hasMark ? Colors.white70 : AppColors.primary,
                       ),
                     ),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 6),
+              const SizedBox(height: 2),
 
-              // The Big Point Number (Just like the '3' drawn in the sketch)
-              AnimatedScale(
-                scale: hasMark ? 1.05 : 0.95,
-                duration: const Duration(milliseconds: 200),
-                curve: Curves.easeOutBack,
-                child: Text(
-                  hasMark ? '$mark' : '—',
-                  style: TextStyle(
-                    fontSize: hasMark ? 36 : 28,
-                    fontWeight: FontWeight.bold,
-                    color: hasMark ? Colors.amberAccent : Colors.grey.shade400,
-                    height: 1.0,
-                  ),
+              // The Big Point Number
+              Text(
+                hasMark ? '$mark' : '—',
+                style: TextStyle(
+                  fontSize: hasMark ? 24 : 18,
+                  fontWeight: FontWeight.bold,
+                  color: hasMark ? Colors.amberAccent : Colors.grey.shade400,
+                  height: 1.0,
                 ),
               ),
 
-              const SizedBox(height: 4),
+              const SizedBox(height: 2),
 
-              // Subtitle
               Text(
-                hasMark ? 'প্রাপ্ত মার্ক' : 'মার্ক দিন',
+                hasMark ? '১ম ঘর' : 'মার্ক দিন',
                 style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 9,
                   fontWeight: FontWeight.w500,
                   color: hasMark ? Colors.white60 : Colors.grey.shade500,
                 ),

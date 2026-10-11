@@ -83,7 +83,7 @@ class VotingController extends GetxController {
         'পয়েন্ট দেওয়া হয়েছে!',
         '${person.name} এর ১ম ঘরে $markValue পয়েন্ট যুক্ত হয়েছে।',
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: const Color(0xFF2563EB),
+        backgroundColor: const Color(0xFF2E7D32),
         colorText: Colors.white,
         duration: const Duration(milliseconds: 1200),
         margin: const EdgeInsets.all(12),

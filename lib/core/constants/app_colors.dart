@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color primary = Color(0xFF3F51B5); // Indigo
-  static const Color primaryLight = Color(0xFFC5CAE9);
-  static const Color primaryDark = Color(0xFF303F9F);
-  static const Color accent = Color(0xFFFF5722); // Deep Orange
-  static const Color background = Color(0xFFF8F9FD);
+  // Fresh Natural Green Theme
+  static const Color primary = Color(0xFF2E7D32); // Forest Green
+  static const Color primaryLight = Color(0xFFA5D6A7); // Soft Green
+  static const Color primaryDark = Color(0xFF1B5E20); // Deep Botanical Green
+  static const Color accent = Color(0xFF4CAF50); // Vibrant Leaf Green
+  static const Color background = Color(0xFFF2F9F4); // Pale Mint/Natural Off-White
   static const Color cardBg = Colors.white;
-  static const Color textPrimary = Color(0xFF1E293B);
-  static const Color textSecondary = Color(0xFF64748B);
-  static const Color badgeBg = Color(0xFF2563EB);
+  static const Color textPrimary = Color(0xFF1B3822); // Dark Forest Text
+  static const Color textSecondary = Color(0xFF52795D); // Muted Sage Text
+  static const Color badgeBg = Color(0xFF2E7D32); // Green Badge
   static const Color badgeText = Colors.white;
 }

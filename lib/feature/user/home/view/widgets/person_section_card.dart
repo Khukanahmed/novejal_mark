@@ -16,40 +16,40 @@ class PersonSectionCard extends StatelessWidget {
     final controller = Get.find<VotingController>();
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(color: Colors.grey.shade200, width: 1.2),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Header with Person Info & Point status
+          // Compact Header
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 14, 16, 10),
+            padding: const EdgeInsets.fromLTRB(12, 10, 12, 8),
             child: Row(
               children: [
                 CircleAvatar(
                   backgroundColor: AppColors.primary,
-                  radius: 20,
+                  radius: 14,
                   child: Text(
                     'P${person.id}',
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                      fontSize: 11,
                     ),
                   ),
                 ),
-                const SizedBox(width: 12),
+                const SizedBox(width: 8),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,15 +57,15 @@ class PersonSectionCard extends StatelessWidget {
                       Text(
                         person.name,
                         style: const TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                           color: AppColors.textPrimary,
                         ),
                       ),
                       const Text(
-                        '১০টি গাছ • রো-তে ৩টি করে • ১ম ঘরে শুধু পয়েন্ট',
+                        '১০টি গাছ • ১ম ঘরে শুধু পয়েন্ট',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 10,
                           color: AppColors.textSecondary,
                         ),
                       ),
@@ -79,12 +79,12 @@ class PersonSectionCard extends StatelessWidget {
                   final hasMark = mark != null;
 
                   return Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
-                      color: hasMark ? const Color(0xFF1E3A8A) : Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(16),
+                      color: hasMark ? const Color(0xFF1B5E20) : Colors.green.shade50,
+                      borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: hasMark ? AppColors.badgeBg : Colors.grey.shade300,
+                        color: hasMark ? AppColors.badgeBg : Colors.green.shade200,
                       ),
                     ),
                     child: Row(
@@ -92,14 +92,14 @@ class PersonSectionCard extends StatelessWidget {
                       children: [
                         Icon(
                           hasMark ? Icons.stars_rounded : Icons.star_border_rounded,
-                          size: 15,
+                          size: 13,
                           color: hasMark ? Colors.amberAccent : Colors.grey.shade500,
                         ),
-                        const SizedBox(width: 4),
+                        const SizedBox(width: 3),
                         Text(
                           hasMark ? 'পয়েন্ট: $mark' : 'পয়েন্ট বাকি',
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: 11,
                             fontWeight: FontWeight.bold,
                             color: hasMark ? Colors.white : Colors.grey.shade700,
                           ),
@@ -114,20 +114,19 @@ class PersonSectionCard extends StatelessWidget {
 
           const Divider(height: 1),
 
-          // 11 Cells Grid:
-          // Cell 0: PointBoxWidget (ONLY Point, NO image as requested!)
-          // Cells 1 to 10: 10 Plant images (3 per row)
+          // Compact 11-Cell Grid (1 point box + 10 plant boxes)
+          // Designed so all 10 plants and the point box fit together on screen
           Padding(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(8),
             child: GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: 11, // 1 point box + 10 plant images
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3, // 3 per row as requested ("row te tin ta kore")
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 0.90,
+                crossAxisCount: 3, // 3 per row
+                crossAxisSpacing: 6, // compact spacing
+                mainAxisSpacing: 6, // compact spacing
+                childAspectRatio: 1.25, // compact height so all 10 fit together on screen
               ),
               itemBuilder: (context, gridIndex) {
                 if (gridIndex == 0) {
@@ -148,12 +147,12 @@ class PersonSectionCard extends StatelessWidget {
             ),
           ),
 
-          // 1 to 10 Points Selector Bar for this Person
+          // Compact 1 to 10 Points Selector Bar
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
             decoration: BoxDecoration(
               color: Colors.grey.shade50,
-              borderRadius: const BorderRadius.vertical(bottom: Radius.circular(20)),
+              borderRadius: const BorderRadius.vertical(bottom: Radius.circular(16)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -162,9 +161,9 @@ class PersonSectionCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '${person.name} এর জন্য পয়েন্ট দিন (১ - ১০):',
+                      '${person.name} এর পয়েন্ট (১-১০):',
                       style: const TextStyle(
-                        fontSize: 12,
+                        fontSize: 11,
                         fontWeight: FontWeight.w600,
                         color: AppColors.textSecondary,
                       ),
@@ -174,9 +173,9 @@ class PersonSectionCard extends StatelessWidget {
                       return Text(
                         currentMark != null
                             ? 'সিলেক্টেড: $currentMark (১ম ঘরে)'
-                            : 'কোনো পয়েন্ট দেওয়া হয়নি',
+                            : 'পয়েন্ট দিন',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 10,
                           fontWeight: FontWeight.bold,
                           color: currentMark != null ? AppColors.primary : Colors.grey.shade500,
                         ),
@@ -184,9 +183,9 @@ class PersonSectionCard extends StatelessWidget {
                     }),
                   ],
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 6),
 
-                // 1 to 10 Numbers Row
+                // 1 to 10 Compact Buttons
                 Obx(() {
                   final activeMark = person.mark.value;
 
@@ -198,14 +197,14 @@ class PersonSectionCard extends StatelessWidget {
                         final isSelected = activeMark == number;
 
                         return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 3),
+                          padding: const EdgeInsets.symmetric(horizontal: 2.5),
                           child: InkWell(
                             onTap: () => controller.applyMarkToPerson(person, number),
-                            borderRadius: BorderRadius.circular(22),
+                            borderRadius: BorderRadius.circular(18),
                             child: AnimatedContainer(
                               duration: const Duration(milliseconds: 200),
-                              width: 44,
-                              height: 44,
+                              width: 36,
+                              height: 36,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: isSelected
@@ -215,14 +214,14 @@ class PersonSectionCard extends StatelessWidget {
                                   color: isSelected
                                       ? AppColors.primaryDark
                                       : Colors.grey.shade300,
-                                  width: isSelected ? 2.5 : 1.2,
+                                  width: isSelected ? 2.0 : 1.0,
                                 ),
                                 boxShadow: isSelected
                                     ? [
                                         BoxShadow(
                                           color: AppColors.primary.withValues(alpha: 0.35),
-                                          blurRadius: 6,
-                                          offset: const Offset(0, 3),
+                                          blurRadius: 4,
+                                          offset: const Offset(0, 2),
                                         ),
                                       ]
                                     : [],
@@ -231,7 +230,7 @@ class PersonSectionCard extends StatelessWidget {
                                 child: Text(
                                   '$number',
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 13,
                                     fontWeight: FontWeight.bold,
                                     color: isSelected
                                         ? Colors.white
